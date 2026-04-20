@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
-    "install:all": "npm install --prefix backend && npm install --prefix frontend"
+    "dev": "concurrently \"python3 backend/app.py\" \"npm run dev --prefix frontend\"",
+    "install:frontend": "npm install --prefix frontend",
+    "install:backend": "pip3 install -r backend/requirements.txt"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
