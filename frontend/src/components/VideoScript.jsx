@@ -1,30 +1,28 @@
 import { useState } from 'react';
 import { generateScript } from '../utils/ai.js';
 
-const PLATFORMS = ['Instagram Reel', 'YouTube Short', 'TikTok'];
-const DURATIONS = ['15', '30', '60', '90'];
+const PLATFORMS = ['Instagram Reel', 'TikTok', 'YouTube Short', 'YouTube Long'];
+const DURATIONS = ['15', '30', '60', '90', '180', '600'];
+const STYLES = ['Educational', 'Entertaining', 'Inspirational', 'Tutorial', 'Storytelling', 'POV / Trend'];
 
 export default function VideoScript({ onNoKey }) {
   const [topic, setTopic] = useState('');
   const [platform, setPlatform] = useState(PLATFORMS[0]);
   const [duration, setDuration] = useState('30');
+  const [style, setStyle] = useState(STYLES[0]);
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
   async function generate() {
     if (!topic.trim()) return;
-    setLoading(true);
-    setResult('');
+    setLoading(true); setResult('');
     try {
-      const text = await generateScript(topic, platform, duration);
-      setResult(text);
+      setResult(await generateScript(topic, platform, duration, style));
     } catch (e) {
-      if (e.message === 'NO_KEY') { onNoKey(); return; }
-      setResult('Error: ' + e.message);
-    } finally {
-      setLoading(false);
-    }
+      if (e.message === 'NO_KEY') return onNoKey();
+      setResult('❌ Error: ' + e.message);
+    } finally { setLoading(false); }
   }
 
   function copy() {
@@ -33,58 +31,64 @@ export default function VideoScript({ onNoKey }) {
     setTimeout(() => setCopied(false), 2000);
   }
 
-  return (
-    <div style={s.page}>
-      <h2 style={s.title}>Video Script Generator</h2>
+  const durationLabel = d => d >= 60 ? `${d / 60}min` : `${d}s`;
 
-      <div style={s.card}>
-        <label style={s.label}>Video topic</label>
+  return (
+    <div className="page fadeIn">
+      <div className="section-header">
+        <div>
+          <h2 className="page-title">🎬 Video Scripts</h2>
+          <p className="page-sub">Write viral scripts with hooks & CTAs</p>
+        </div>
+      </div>
+
+      <div className="card">
+        <label className="label">Video topic or idea</label>
         <textarea
+          className="input"
           value={topic}
           onChange={e => setTopic(e.target.value)}
-          placeholder="e.g. 5 morning habits that changed my life"
-          style={s.textarea}
+          placeholder="e.g. 3 morning habits that doubled my productivity"
           rows={2}
         />
 
-        <label style={s.label}>Platform</label>
-        <div style={s.row}>
+        <label className="label">Platform</label>
+        <div className="chip-group">
           {PLATFORMS.map(p => (
-            <button
-              key={p}
-              onClick={() => setPlatform(p)}
-              style={{ ...s.chip, ...(platform === p ? s.chipActive : {}) }}
-            >
-              {p}
-            </button>
+            <button key={p} className={`chip ${platform === p ? 'active' : ''}`} onClick={() => setPlatform(p)}>{p}</button>
           ))}
         </div>
 
-        <label style={s.label}>Duration (seconds)</label>
-        <div style={{ ...s.row, marginBottom: 20 }}>
+        <label className="label">Duration</label>
+        <div className="chip-group">
           {DURATIONS.map(d => (
-            <button
-              key={d}
-              onClick={() => setDuration(d)}
-              style={{ ...s.chip, ...(duration === d ? s.chipActive : {}) }}
-            >
-              {d}s
+            <button key={d} className={`chip ${duration === d ? 'active' : ''}`} onClick={() => setDuration(d)}>
+              {durationLabel(parseInt(d))}
             </button>
           ))}
         </div>
 
-        <button onClick={generate} disabled={loading || !topic.trim()} style={s.btn}>
-          {loading ? 'Writing script...' : 'Generate Script'}
+        <label className="label">Content Style</label>
+        <div className="chip-group">
+          {STYLES.map(st => (
+            <button key={st} className={`chip ${style === st ? 'active' : ''}`} onClick={() => setStyle(st)}>{st}</button>
+          ))}
+        </div>
+
+        <button className="btn-primary" onClick={generate} disabled={loading || !topic.trim()}>
+          {loading ? <><span className="spinner" />Writing script...</> : '🎬 Generate Script'}
         </button>
       </div>
 
       {result && (
-        <div style={s.resultCard}>
+        <div className="card fadeIn">
           <div style={s.resultHeader}>
             <span style={s.resultLabel}>Your Script</span>
-            <button onClick={copy} style={s.copyBtn}>{copied ? 'Copied!' : 'Copy'}</button>
+            <button className={`copy-btn ${copied ? 'success' : ''}`} onClick={copy}>
+              {copied ? '✓ Copied' : 'Copy All'}
+            </button>
           </div>
-          <pre style={s.pre}>{result}</pre>
+          <div className="result-box">{result}</div>
         </div>
       )}
     </div>
@@ -92,18 +96,6 @@ export default function VideoScript({ onNoKey }) {
 }
 
 const s = {
-  page: { padding: 20, maxWidth: 600, margin: '0 auto' },
-  title: { fontSize: 22, fontWeight: 700, marginBottom: 20 },
-  card: { background: '#fff', borderRadius: 16, padding: 24, boxShadow: '0 2px 8px rgba(0,0,0,0.08)', marginBottom: 20 },
-  label: { display: 'block', fontSize: 14, fontWeight: 600, marginBottom: 8, color: '#444' },
-  textarea: { width: '100%', border: '1px solid #ddd', borderRadius: 10, padding: '12px 14px', fontSize: 15, resize: 'none', outline: 'none', marginBottom: 16 },
-  row: { display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 16 },
-  chip: { border: '1px solid #ddd', borderRadius: 20, padding: '7px 14px', fontSize: 13, background: '#fff', color: '#555' },
-  chipActive: { background: '#6c63ff', color: '#fff', border: '1px solid #6c63ff' },
-  btn: { background: '#6c63ff', color: '#fff', border: 'none', borderRadius: 10, padding: '13px 24px', fontSize: 15, fontWeight: 600, width: '100%' },
-  resultCard: { background: '#fff', borderRadius: 16, padding: 20, boxShadow: '0 2px 8px rgba(0,0,0,0.08)' },
-  resultHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 },
-  resultLabel: { fontWeight: 600, color: '#6c63ff' },
-  copyBtn: { background: '#f0f0f5', border: 'none', borderRadius: 8, padding: '6px 12px', fontSize: 13, fontWeight: 500 },
-  pre: { fontSize: 14, lineHeight: 1.8, color: '#333', whiteSpace: 'pre-wrap', fontFamily: 'inherit' },
+  resultHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
+  resultLabel: { fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--pink)' },
 };
