@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Si Studio — Social Media for Local Businesses</title>
+<meta name="description" content="Done-for-you Instagram and social media management for local businesses. Consistent posts, real growth, one flat monthly price.">
+<style>
+  /* ====== EDIT THESE TWO LINES ====== */
+  /* Your contact email and business name are set in the <script> at the bottom. */
+  :root {
+    --bg: #0b0b0f; --card: #15151c; --text: #f2f2f5; --muted: #a0a0ad;
+    --accent: #d4af37; --accent2: #f5d67a; --line: #26262f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; }
+  .logo { font-weight: 800; letter-spacing: .5px; font-size: 20px; }
+  .logo span { color: var(--accent); }
+  .btn { display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent2));
+         color: #111; font-weight: 700; padding: 13px 26px; border-radius: 10px;
+         text-decoration: none; border: 0; cursor: pointer; font-size: 16px; }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  header.hero { padding: 70px 0 60px; text-align: center; }
+  .hero h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.1; margin-bottom: 18px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 19px; max-width: 640px; margin: 0 auto 30px; }
+  .hero .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  section { padding: 60px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: clamp(26px, 4vw, 36px); margin-bottom: 10px; text-align: center; }
+  .sub { color: var(--muted); text-align: center; margin-bottom: 40px; }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px; }
+  .card h3 { margin-bottom: 8px; }
+  .card p, .card li { color: var(--muted); }
+  .icon { font-size: 28px; margin-bottom: 10px; }
+  .price { font-size: 40px; font-weight: 800; margin: 10px 0; }
+  .price small { font-size: 16px; color: var(--muted); font-weight: 400; }
+  .card ul { list-style: none; margin: 16px 0 22px; }
+  .card li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .card li::before { content: "✓ "; color: var(--accent); font-weight: 700; }
+  .card.featured { border-color: var(--accent); position: relative; }
+  .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+           background: var(--accent); color: #111; font-size: 12px; font-weight: 800;
+           padding: 4px 12px; border-radius: 20px; }
+  .steps { counter-reset: s; }
+  .steps .card::before { counter-increment: s; content: counter(s);
+           display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+           background: var(--accent); color: #111; font-weight: 800; margin-bottom: 12px; }
+  details { background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+            padding: 18px 22px; margin-bottom: 12px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { color: var(--muted); margin-top: 10px; }
+  form { max-width: 560px; margin: 0 auto; display: grid; gap: 12px; }
+  input, textarea, select { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid var(--line);
+         background: var(--card); color: var(--text); font: inherit; }
+  footer { text-align: center; color: var(--muted); padding: 40px 0; border-top: 1px solid var(--line); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo" data-name>Si <span>Studio</span></div>
+    <a class="btn ghost" href="#contact">Free audit</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Your business, <em>posted every week</em> — without you lifting a finger.</h1>
+    <p>We run Instagram and Facebook for local businesses: photos, captions, scheduling, and replies. You focus on customers. We make you look busy online.</p>
+    <div class="ctas">
+      <a class="btn" href="#contact">Get a free profile audit</a>
+      <a class="btn ghost" href="#pricing">See pricing</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>What you get</h2>
+    <p class="sub">Everything a busy owner doesn't have time for.</p>
+    <div class="grid">
+      <div class="card"><div class="icon">📸</div><h3>Content made for you</h3><p>Branded posts, reels and stories designed around your products, specials and events.</p></div>
+      <div class="card"><div class="icon">🗓️</div><h3>Consistent schedule</h3><p>Posts go out at the times your customers are actually scrolling. No more 3-month gaps.</p></div>
+      <div class="card"><div class="icon">✍️</div><h3>Captions that sell</h3><p>Clear, friendly captions with calls-to-action that drive calls, bookings and walk-ins.</p></div>
+      <div class="card"><div class="icon">📈</div><h3>Monthly report</h3><p>Simple one-page summary: followers, reach, and what's working — in plain English.</p></div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Simple monthly pricing</h2>
+    <p class="sub">No contracts. Cancel anytime. First week free.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Starter</h3>
+        <div class="price">$299<small>/mo</small></div>
+        <ul><li>1 platform</li><li>8 posts per month</li><li>Captions &amp; hashtags</li><li>Monthly report</li></ul>
+        <a class="btn ghost" href="#contact" data-plan="Starter">Choose Starter</a>
+      </div>
+      <div class="card featured">
+        <span class="badge">MOST POPULAR</span>
+        <h3>Growth</h3>
+        <div class="price">$499<small>/mo</small></div>
+        <ul><li>Instagram + Facebook</li><li>12 posts + 8 stories</li><li>2 short reels</li><li>Reply to comments &amp; DMs</li><li>Monthly report</li></ul>
+        <a class="btn" href="#contact" data-plan="Growth">Choose Growth</a>
+      </div>
+      <div class="card">
+        <h3>Premium</h3>
+        <div class="price">$799<small>/mo</small></div>
+        <ul><li>Up to 3 platforms</li><li>20 posts + daily stories</li><li>4 reels</li><li>Monthly on-site photo shoot</li><li>Priority support</li></ul>
+        <a class="btn ghost" href="#contact" data-plan="Premium">Choose Premium</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <p class="sub">Up and running in under a week.</p>
+    <div class="grid steps">
+      <div class="card"><h3>Free audit</h3><p>We review your current profile and send you 3 quick wins — free, no strings.</p></div>
+      <div class="card"><h3>15-minute call</h3><p>We learn your business, your customers, and your style.</p></div>
+      <div class="card"><h3>We post, you grow</h3><p>You approve the first week of content, then we handle everything.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <p class="sub">&nbsp;</p>
+    <div style="max-width:720px;margin:0 auto">
+      <details><summary>Do I need to sign a contract?</summary><p>No. It's month-to-month and you can cancel anytime.</p></details>
+      <details><summary>Do I need to give you my password?</summary><p>No. You add us as a team member through Meta Business Suite, and you can remove us with one click.</p></details>
+      <details><summary>What if I don't have good photos?</summary><p>We create branded graphics, and on Premium we come take photos for you each month.</p></details>
+      <details><summary>What kinds of businesses do you work with?</summary><p>Restaurants, cafés, barbershops, salons, gyms, boutiques, contractors, real estate agents — any local business with customers nearby.</p></details>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get your free profile audit</h2>
+    <p class="sub">Tell us about your business and we'll reply within 24 hours.</p>
+    <form id="lead">
+      <input name="name" placeholder="Your name" required>
+      <input name="business" placeholder="Business name" required>
+      <input name="handle" placeholder="Instagram handle or website (optional)">
+      <select name="plan">
+        <option value="Not sure yet">Which plan? (not sure is fine)</option>
+        <option>Starter</option><option>Growth</option><option>Premium</option>
+      </select>
+      <textarea name="msg" rows="4" placeholder="Anything we should know?"></textarea>
+      <button class="btn" type="submit">Send — it's free</button>
+    </form>
+  </section>
+</div>
+<footer><span data-name>Si Studio</span> · Social media for local businesses · <a id="mail" href="#">Email us</a></footer>
+
+<script>
+  // ====== SET THESE BEFORE SHARING THE SITE ======
+  const CONTACT_EMAIL = "YOUR_EMAIL@example.com";
+  const BUSINESS_NAME = "Si Studio";
+  // ===============================================
+
+  document.querySelectorAll("[data-name]").forEach(el => {
+    const [first, ...rest] = BUSINESS_NAME.split(" ");
+    el.innerHTML = rest.length ? `${first} <span>${rest.join(" ")}</span>` : first;
+  });
+  document.title = `${BUSINESS_NAME} — Social Media for Local Businesses`;
+  document.getElementById("mail").href = `mailto:${CONTACT_EMAIL}`;
+
+  document.querySelectorAll("[data-plan]").forEach(a => a.addEventListener("click", () => {
+    document.querySelector("select[name=plan]").value = a.dataset.plan;
+  }));
+
+  document.getElementById("lead").addEventListener("submit", e => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const body = [...f.entries()].map(([k, v]) => `${k}: ${v}`).join("\n");
+    location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Free audit request — " + f.get("business"))}&body=${encodeURIComponent(body)}`;
+  });
+</script>
+</body>
+</html>
